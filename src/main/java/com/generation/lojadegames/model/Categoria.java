@@ -14,19 +14,19 @@ import javax.validation.constraints.NotBlank;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name="tb_categoria")
+@Table(name = "tb_categoria")
 public class Categoria {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@NotBlank(message="O campo tipo deve ser preenchido.")
+
+	@NotBlank(message = "O campo tipo deve ser preenchido.")
 	private String tipo;
-	
+
 	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("categoria")
-	private List<Categoria> categoria;
+	private List<Produtos> produtos;
 
 	public Long getId() {
 		return id;
@@ -44,12 +44,20 @@ public class Categoria {
 		this.tipo = tipo;
 	}
 
-	public List<Categoria> getCategoria() {
-		return categoria;
+	public List<Produtos> getProdutos() {
+		return produtos;
 	}
 
-	public void setCategoria(List<Categoria> categoria) {
-		this.categoria = categoria;
+	public void setCategoria(List<Produtos> produtos) {
+		this.produtos = produtos;
 	}
+
+//	public List<Categoria> getCategoria() {
+//		return categoria;
+//	}
+//
+//	public void setCategoria(List<Categoria> categoria) {
+//		this.categoria = categoria;
+//	}
 
 }

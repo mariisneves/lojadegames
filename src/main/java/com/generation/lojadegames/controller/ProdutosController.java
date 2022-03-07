@@ -33,7 +33,7 @@ public class ProdutosController {
 	@Autowired
 	private CategoriaRepository categoriaRepository;
 	
-	@GetMapping
+	@GetMapping("/all")
 	public ResponseEntity<List<Produtos>> getAll(){
 		return ResponseEntity.ok(produtosRepository.findAll());
 	}
