@@ -2,6 +2,7 @@ package com.generation.lojadegames.model;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -36,6 +37,9 @@ public class Produtos {
 	private BigDecimal preco;
 	
 	private String foto;
+	
+	@Column(columnDefinition = "integer default 0")
+	private int curtir;
 	
 	@ManyToOne
 	@JsonIgnoreProperties ("produtos")
@@ -91,6 +95,14 @@ public class Produtos {
 
 	public void setFoto(String foto) {
 		this.foto = foto;
+	}
+	
+	public int getCurtir() {
+		return curtir;
+	}
+
+	public void setCurtir(int curtir) {
+		this.curtir = curtir;
 	}
 
 	public Categoria getCategoria() {
